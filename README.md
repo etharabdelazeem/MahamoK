@@ -1,2 +1,2 @@
 # MahamoK
-MahamoK, a simple to-do list web aplication
+MahamoK, a simple to-do list web application
