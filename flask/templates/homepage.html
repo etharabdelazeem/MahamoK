@@ -3,43 +3,34 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>home</title>
+		<title>Home</title>
 		<link rel="stylesheet" href="{{ url_for('static',filename='styles/homepage.css') }}"/>
 		<script src="{{ url_for('static',filename='styles/homepage.js') }}" defer></script>
 	</head>
 	<body>
 		<header>
-		</header>
-		<h1>Today's MahamoK:</h1>
+			<h1>Today's MahamoK:</h1>
+		</header>i
 		<div class="wrapper">
 			<ul id="to-do list">
+				{% for task in tasks %}
 				<li class="todo">
-					<input type="checkbox" id="todo-1">
-					<label for="todo-1" class="custom-checkbox">
+					<input type="checkbox" id="todo-{{ task.id }}">
+					<label for="todo-{{ task.id }}" class="custom-checkbox">
 						<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#124c81"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
 					</label>
-					<label for="todo-1" class="todo-text">
-						task 1	
-					</label>
-					<button class="delete-button">
+					<label for="todo-{{ task.id }}" class="todo-text">{{ task.title }}</label>
+					<button class="delete-button" onclick="location.href='{{ url_for('delete_task', task_id=task.id) }}'">
 						<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#124c81"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg>
 					</button>
 				</li>
-				<li class="todo">
-					<input type="checkbox" id="todo-2">
-					<label for="todo-2" class="custom-checkbox">
-						<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#124c81"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
-					</label>
-					<label for="todo-2" class="todo-text">
-						task 2	
-					</label>
-					<button class="delete-button">
-						<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#124c81"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg>
-					</button>
-				</li>
+				{% endfor %}
 			</ul>
-			<form>
-				<input id="todo-input" type="text" placeholder="Write your task and hit Enter to add" required>
+			<form method="POST" action="{{ url_for('add_task') }}">
+				<input id="todo-input" type="text" name="title" placeholder="Write your task" required>
+				<input id="todo-description" type="text" name="description" placeholder="Description (optional)">
+				<input id="todo-priority" type="text" name="priority" placeholder="Priority (optional)">
+				<input id="todo-deadline" type="date" name="deadline" placeholder="Deadline (optional)">
 				<button id="add-button">
 					<svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#f9f9f9"><path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/></svg>
 				</button>

@@ -34,8 +34,8 @@
 				<button type="submit">Sign Up</button>
 			</form>
 
-			<p>Already have an account? <a href="signin.html">Sign In</a></p>
-			<p> Log in as a <a id="guest" href="{{ url_for(homepage) }}">Guest</a></p>
+			<p>Already have an account? <a href="{{ url_for('login') }}">Log In</a></p>
+			<p> Log in as a <a id="guest" href="{{ url_for('guest') }}">Guest</a></p>
 		</div>
 	</body>
 </html>

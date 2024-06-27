@@ -33,9 +33,13 @@ def welcome():
     return 'Welcome to MahamoK!'
 
 @app.route('/homepage')
-@login_required
 def homepage():
-    tasks = Task.query.filter_by(user_id=current_user.id).all()
+    if current_user.is_authenticated:
+        # Load user-specific tasks
+        tasks = Task.query.filter_by(user_id=current_user.id).all()
+    else:
+        # For guest users, maybe load some default tasks or an empty list
+        tasks = []
     return render_template('homepage.html', tasks=tasks)
 
 @app.route('/signup', methods=['GET', 'POST'])
@@ -63,6 +67,10 @@ def login():
             return redirect(url_for('homepage'))
         flash('Login Unsuccessful. Please check email and password', 'danger')
     return render_template('signin.html')
+
+@app.route('/guest')
+def guest():
+        return redirect(url_for('homepage'))
 
 @app.route('/logout')
 @login_required
