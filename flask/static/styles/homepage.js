@@ -53,8 +53,7 @@ $(document).ready(function() {
             error: function(error) {
                 console.error("Error adding task:", error);
                 alert("Error adding task. Please try again.");
-            },
-		$(`#todo-${taskId}`).parent().add();
+            }
         });
     });
 
@@ -73,5 +72,10 @@ $(document).ready(function() {
             }
         });
     }
+
+    // Event handler for logout button
+    $('#logout-button').click(function(event) {
+        window.location.href = '/logout';
+    });
 });
 

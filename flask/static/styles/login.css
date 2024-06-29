@@ -12,7 +12,7 @@
 }
 
 html{
-  font-family: "Lexend", sans-serif;
+  font-family: cursive;
   font-size: 16pt;
   color: var(--primary-color);
 }
@@ -47,7 +47,7 @@ h1 {
 	margin-bottom: 10px;
 	}
 	
-#signin-form,
+#login-form,
 #signup-form{
 	margin-bottom: 30px;
 }
@@ -60,6 +60,7 @@ label {
 input[type="email"],
 input[type="text"],
 input[type="password"] {
+	font-family: cursive;
 	width: 100%;
 	padding: 10px;
 	border: 1px solid #ccc;
@@ -70,6 +71,7 @@ input[type="password"] {
 button[type="submit"] {
 	background-color: var(--secondary-color);
 	color: white;
+	font-family: cursive;
 	padding: 10px 20px;
 	border: none;
 	border-radius: 3px;

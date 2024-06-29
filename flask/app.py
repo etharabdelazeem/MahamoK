@@ -72,7 +72,7 @@ def login():
             login_user(user)
             return redirect(url_for('homepage'))
         flash('Login Unsuccessful. Please check email and password', 'danger')
-    return render_template('signin.html')
+    return render_template('login.html')
 
 @app.route('/guest')
 def guest():
@@ -82,7 +82,7 @@ def guest():
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for('welcome'))
+    return redirect(url_for('login'))
 
 @app.route('/add_task', methods=['POST'])
 def add_task():

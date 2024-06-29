@@ -4,13 +4,13 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Sign In </title>
-		<link rel="stylesheet" href="{{ url_for('static',filename='styles/signin.css') }}">
-		<script src="{{ url_for('static',filename='styles/signin.js') }}" defer></script>
+		<link rel="stylesheet" href="{{ url_for('static',filename='styles/login.css') }}">
+		<script src="{{ url_for('static',filename='styles/login.js') }}" defer></script>
 	</head>
 	<body>
 		<div class="container">
-        <h1>Sign In</h1>
-	<form id="signin-form" method="POST" action="{{ url_for('login') }}">
+        <h1>Log In</h1>
+	<form id="login-form" method="POST" action="{{ url_for('login') }}">
 		<div class="form-group">
 			<label for="email">Email Address</label>
 			<input type="email" id="email" name="email" placeholder="Enter you email">
@@ -19,11 +19,11 @@
 			<label for="password">Password</label>
 			<input type="password" id="password" name="password" placeholder="Enter your password" required>
 		</div>
-		<button type="submit">Sign In</button>
+		<button type="submit">Log In</button>
 	</form>
 	<p>Don't have an account? <a href="{{ url_for('signup') }}">Sign Up</a></p>
 	<p>Or <a id="guest" href="{{ url_for('guest') }}">Login as a Guest</a></p>
 		</div>
-		<script src="{{ url_for('static', filename='signin.js') }}"></script>
+		<script src="{{ url_for('static', filename='login.js') }}"></script>
 </body>
 </html>
