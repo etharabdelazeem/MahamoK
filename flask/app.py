@@ -1,10 +1,10 @@
 import os
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
 from flask_sqlalchemy import SQLAlchemy
-from flask_login import LoginManager, login_user, logout_user, login_required, current_user
+from flask_login import LoginManager, login_user, logout_user, login_required, current_user, AnonymousUserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 from models import db, User, Task
-
+from flask_migrate import Migrate
 from config import DevelopmentConfig, ProductionConfig
 from dotenv import load_dotenv
 
@@ -19,10 +19,16 @@ if os.environ.get('FLASK_ENV') == 'production':
 else:
     app.config.from_object(DevelopmentConfig)
 
+#for guests
+class AnonymousUser(AnonymousUserMixin):
+        id = None
 # Initialize the database and login manager
+db.init_app(app)
+migrate = Migrate(app, db)  # Initialize Flask-Migrate
 login_manager = LoginManager(app)
 login_manager.login_view = 'login'
 login_manager.login_message_category = 'info'
+login_manager.anonymous_user = AnonymousUser
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -48,7 +54,7 @@ def signup():
         username = request.form['username']
         email = request.form['email']
         password = request.form['password']
-        hashed_password = generate_password_hash(password, method='sha256')
+        hashed_password = generate_password_hash(password, method='pbkdf2:sha256')
         new_user = User(username=username, email=email, password=hashed_password)
         db.session.add(new_user)
         db.session.commit()
@@ -79,19 +85,27 @@ def logout():
     return redirect(url_for('welcome'))
 
 @app.route('/add_task', methods=['POST'])
-@login_required
 def add_task():
     title = request.form['title']
-    description = request.form['description']
-    deadline = request.form['deadline']
-    priority = request.form['priority']
+    description = request.form.get('description', '')
+    deadline = request.form.get('deadline', None) or None
+    priority = request.form.get('priority', '')
     new_task = Task(title=title, description=description, deadline=deadline, priority=priority, user_id=current_user.id)
     db.session.add(new_task)
     db.session.commit()
+    task_data = {
+        'id': new_task.id,
+        'title': new_task.title,
+        'description': new_task.description,
+        'deadline': new_task.deadline,
+        'priority': new_task.priority,
+        'completed': new_task.completed
+    }
+    if request.is_json:
+        return jsonify(success=True, task=task_data)
     return redirect(url_for('homepage'))
 
 @app.route('/complete_task/<int:task_id>')
-@login_required
 def complete_task(task_id):
     task = Task.query.get_or_404(task_id)
     task.completed = True
@@ -99,7 +113,6 @@ def complete_task(task_id):
     return redirect(url_for('homepage'))
 
 @app.route('/delete_task/<int:task_id>')
-@login_required
 def delete_task(task_id):
     task = Task.query.get_or_404(task_id)
     db.session.delete(task)

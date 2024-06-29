@@ -38,7 +38,13 @@ h1{
     text-align: center;
     color: var(--accent-color);
 }
-
+#welcome{
+	padding: 10px;
+	position: top left;
+	background-color: var(--background);
+	border-radius: 1000px;
+	color: var(--primary-color);
+}
 .wrapper{
     width: 700px;
     max-width: 100%;
@@ -50,7 +56,7 @@ h1{
 #todo-input{
     box-sizing: border-box;
     padding: 12px 20px;
-    width: 100%;
+    width: 88%;
     background-color: var(--text-color);
     border: 2px solid var(--secondary-color);
     border-radius: 1000px;
@@ -61,6 +67,52 @@ h1{
 
 #todo-input:focus{
     outline: none;
+}
+
+#todo-description{
+	width: 26%;
+}
+
+#todo-priority{
+	width: 26%;
+}
+
+#todo-deadline{
+	width: 26%;
+}
+
+#todo-form {
+    background-color: var(--primary-color);
+    border-radius: 10px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#todo-form input,
+
+#todo-form input[type="date"] {
+    /* Customize date input appearance as needed */
+    padding: 8px;
+    border: 1px solid var(--secondary-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    caret-color: var(--accent-color);
+}
+
+#todo-form button {
+    padding: 12px 20px;
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+#todo-form button:hover {
+    background-color: #0d355f; /* Darker shade of accent color on hover */
 }
 
 form{
@@ -74,6 +126,7 @@ form{
 
     background-color: var(--accent-color);
     height: 100%;
+    width: 12%;
     padding: 12px 12px;
     border: 2px solid var(--secondary-color);
     border-radius: 1000px;

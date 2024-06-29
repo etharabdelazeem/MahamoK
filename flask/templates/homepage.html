@@ -5,10 +5,12 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Home</title>
 		<link rel="stylesheet" href="{{ url_for('static',filename='styles/homepage.css') }}"/>
+		<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 		<script src="{{ url_for('static',filename='styles/homepage.js') }}" defer></script>
 	</head>
 	<body>
 		<header>
+			<p id="welcome">{{ 'Welcome, ' + current_user.username + '!' if current_user.is_authenticated else 'Welcome, Our dear Guest!' }}</p>
 			<h1>Today's MahamoK:</h1>
 		</header>
 		<div class="wrapper">
@@ -26,14 +28,22 @@
 				</li>
 				{% endfor %}
 			</ul>
-			<form method="POST" action="{{ url_for('add_task') }}">
-				<input id="todo-input" type="text" name="title" placeholder="Write your task" required>
-				<input id="todo-description" type="text" name="description" placeholder="Description (optional)">
-				<input id="todo-priority" type="text" name="priority" placeholder="Priority (optional)">
-				<input id="todo-deadline" type="date" name="deadline" placeholder="Deadline (optional)">
+			<form id="todo-form" method="POST" action="{{ url_for('add_task') }}">
+				<div>
+					<div>
+						<input id="todo-input" type="text" name="title" placeholder="Write your task" required>
+						<div>
+							<input id="todo-description" type="text" name="description" placeholder="Description (optional)">
+							<input id="todo-priority" type="text" name="priority" placeholder="Priority (optional)">
+							<input id="todo-deadline" type="date" name="deadline" placeholder="Deadline (optional)">
+						</div>
+			</div>
+				<div>
 				<button id="add-button">
 					<svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#f9f9f9"><path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/></svg>
 				</button>
+				</div>
+			</div>
 			</form>
 		</div>
 		<footer>
