@@ -1,12 +1,32 @@
+:root{
+        --background: #FEFBE7;
+        --primary-color: #99a8bb;
+        --secondary-color: #4e6190;
+        --accent-color: #124C81;
+        --text-color: #124C81;
+}
+
+*{
+        margin: 0;
+        padding: 0;
+}
+
+html{
+  font-family: "Lexend", sans-serif;
+  font-size: 16pt;
+  color: var(--primary-color);
+}
+
 body {
-	font-family: sans-serif;
-	margin: 0;
-	padding: 0;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	min-height: 100vh;
-	background-color: #A0937D;
+	background-color: var(--background);
+   	background-image: url('../icons/sun.png') ;
+	background-repeat: no-repeat;
+	background-position: top left;
+   	background-size: 300px auto;
 	}
 
 .container {
@@ -20,18 +40,25 @@ body {
 h1 {
 	text-align: center;
 	margin-bottom: 20px;
+	color: var(--accent-color);
 	}
 
 .form-group {
 	margin-bottom: 10px;
 	}
 	
+#signin-form,
+#signup-form{
+	margin-bottom: 30px;
+}
+
 label {
 	display: block;
 	margin-bottom: 5px;
 	}
 
 input[type="email"],
+input[type="text"],
 input[type="password"] {
 	width: 100%;
 	padding: 10px;
@@ -41,7 +68,7 @@ input[type="password"] {
 	}
 
 button[type="submit"] {
-	background-color: #4CAF50;
+	background-color: var(--secondary-color);
 	color: white;
 	padding: 10px 20px;
 	border: none;
@@ -50,13 +77,18 @@ button[type="submit"] {
 	}
 
 button[type="submit"]:hover {
-	background-color: #45A049 ;
+	background-color: var(--accent-color) ;
 	}
 
 a {
 	text-decoration: none;
-	color: #4CAF50;
+	color: var(--secondary-color);
 	}
 a:hover{
-	color:#1b0b8f
+	color: var(--accent-color);
 	}
+p {
+	padding: 3px;
+	font-size: 0.8rem;
+	text-align: center;
+}
