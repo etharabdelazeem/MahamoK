@@ -51,8 +51,10 @@ body{
 	list-style: none;
 	display: contents;
 }
-.logo{
-	color: var(--text-color);
+
+.logo img{
+	height: 80px;
+	width: auto;
 }
 h1{
     margin-top: 60px;

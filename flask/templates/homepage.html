@@ -11,7 +11,7 @@
 	<body>
 		<header class="navbar">
 			<div class="navdiv">
-				<div class="logo"><img src=url('..flask/static/icons/websiteGuestLogo.png')></a></div>
+				<div class="logo"><img src="{{ url_for('static', filename='icons/websiteGuestLogo.png') }}" alt="Logo"></div>
 				<ul class="navbarlist">
 					<p id="welcome">{{ 'Welcome, ' + current_user.username + '!' if current_user.is_authenticated else 'Welcome, Our dear Guest!' }}</p>
 					<button id="logout-button"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#f9f9f9"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h280v80H200Zm440-160-55-58 102-102H360v-80h327L585-622l55-58 200 200-200 200Z"/></svg></button>
