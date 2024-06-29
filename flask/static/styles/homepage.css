@@ -61,8 +61,8 @@ h1{
     border: 2px solid var(--secondary-color);
     border-radius: 1000px;
     font: inherit;
-    color: var(--text-color);
-    caret-color: var(--accent-color);
+    caret-color: var(--text-color);
+    color: var(--accent-color);
 }
 
 #todo-input:focus{
@@ -98,7 +98,8 @@ h1{
     border: 1px solid var(--secondary-color);
     border-radius: 8px;
     font-size: 1rem;
-    caret-color: var(--accent-color);
+    caret-color: var(--text-color);
+    color: var(--accent-color);
 }
 
 #todo-form button {
