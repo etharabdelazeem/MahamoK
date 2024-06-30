@@ -66,6 +66,7 @@ h1{
 }
 #welcome{
 	padding: 10px;
+	margin-left: -100px;
 	color: var(--primary-color);
 }
 .wrapper{
