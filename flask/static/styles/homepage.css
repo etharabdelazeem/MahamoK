@@ -21,7 +21,6 @@ body{
     min-height: 100vh;
     padding: 10px;
     background-color: var(--background);
-    background-image: url('../icons/sun.png') ;
     background-repeat: no-repeat;
     background-position: top left;
     background-size: 300px auto;
@@ -34,8 +33,6 @@ body{
 	background-color: var(--text-color);
 	padding-left: 30px;
 	padding-right: 30px;
-	padding-top: 5px;
-	padding-bottom: 5px;
 	width: 100%;
 	margin-top: -10px;
 	margin-bottom: 30px;
@@ -53,30 +50,31 @@ body{
 }
 
 .logo img{
-	height: 80px;
+	height: 50px;
 	width: auto;
 }
 h1{
-    margin-top: 60px;
+    margin-top: 50px;
     margin-bottom: 20px;
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-weight: 800;
     text-align: center;
     color: var(--accent-color);
 }
 #welcome{
-	padding: 10px;
+	font-size: 0.8rem;
+	padding: 5px;
 	margin-left: -100px;
 	color: var(--primary-color);
 }
 .wrapper{
-    width: 700px;
+    width: 600px;
     max-width: 100%;
     display: flex;
     flex-direction: column;
     gap: 10px;
     background-color: #fff;
-    padding: 30px;
+    padding: 20px;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
@@ -98,7 +96,7 @@ h1{
 }
 
 #todo-description{
-	width: 26%;
+	width: 27%;
 }
 
 #todo-priority{
@@ -126,7 +124,7 @@ h1{
     font-family: cursive;
     border: 1px solid var(--secondary-color);
     border-radius: 8px;
-    font-size: 1rem;
+    font-size: 0.8rem;
     caret-color: var(--text-color);
     color: var(--accent-color);
 }
@@ -168,7 +166,7 @@ form{
 
 #logout-button{
     background-color: var(--accent-color);
-    padding: 12px 12px;
+    padding: 7px 7px;
     border: 2px solid var(--secondary-color);
     border-radius: 10px;
     font: inherit;
@@ -188,7 +186,7 @@ form{
 }
 
 .todo .todo-text{
-    padding: 15px;
+    padding: 10px;
     padding-right: 0;
     flex-grow: 1;
     transition: 200ms ease;
@@ -200,7 +198,7 @@ form{
 	align-items: center;
 	justify-content: stretch;
 	width: -webkit-fill-available;
-	font-size: 1.3em;
+	font-size: 1rem;
 }
 
 .task-details {
@@ -211,16 +209,16 @@ form{
 }
 
 .task-description, .task-deadline {
-    margin-bottom: 18px;
+    margin-bottom: 10px;
     width: 50%;
     padding: 0;
-    font-size: 0.9em;
+    font-size: 0.8em;
     color: var(--accent-color);
 }
 
 .task-priority {
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
     display: inline-block;
     margin-right: 5px;

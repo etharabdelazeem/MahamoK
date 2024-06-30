@@ -23,7 +23,6 @@ body {
 	align-items: center;
 	min-height: 100vh;
 	background-color: var(--background);
-   	background-image: url('../icons/sun.png') ;
 	background-repeat: no-repeat;
 	background-position: top left;
    	background-size: 300px auto;
