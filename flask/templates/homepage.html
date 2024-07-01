@@ -2,6 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
+		<meta htttp-eqiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Home</title>
 		<link rel="stylesheet" href="{{ url_for('static',filename='styles/homepage.css') }}"/>
@@ -19,7 +20,7 @@
 			</div>
 		</header>
 		<div class="wrapper">
-			<h1>Today's MahamoK:</h1>
+			<h1 id="h1">Today's MahamoK:</h1>
 			<ul id="to-do list">
 				{% for task in tasks %}
 				<li class="todo">
@@ -35,8 +36,8 @@
 						</button>
 					</div>
 					<div class="task-details">
-            					<p class="task-description">Description: {{ task.description }}</p>
-            					<p class="task-deadline">Deadline: {{ task.deadline }}</p>
+            					<p id="description" class="task-description">Description: {{ task.description }}</p>
+            					<p id="deadline" class="task-deadline">Deadline: {{ task.deadline }}</p>
 					</div>
 				</li>
 				{% endfor %}
@@ -61,5 +62,6 @@
 		</div>
 		<footer>
 		</footer>
+		<script src="{{ url_for('static', filename='styles/translations.js') }}"></script>
 	</body>
 </html>

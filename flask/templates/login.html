@@ -9,21 +9,21 @@
 	</head>
 	<body>
 		<div class="container">
-        <h1>Log In</h1>
+        <h1 id="login">Log In</h1>
 	<form id="login-form" method="POST" action="{{ url_for('login') }}">
 		<div class="form-group">
-			<label for="email">Email Address</label>
-			<input type="email" id="email" name="email" placeholder="Enter you email">
+			<label id="emailjs" for="email">Email Address</label>
+			<input type="email" id="email" name="email" placeholder="Enter your email">
 		</div>
 		<div class="form-group">
-			<label for="password">Password</label>
+			<label id="passwordjs" for="password">Password</label>
 			<input type="password" id="password" name="password" placeholder="Enter your password" required>
 		</div>
-		<button type="submit">Log In</button>
+		<button id="login" type="submit">Log In</button>
 	</form>
-	<p>Don't have an account? <a href="{{ url_for('signup') }}">Sign Up</a></p>
-	<p>Or <a id="guest" href="{{ url_for('guest') }}">Login as a Guest</a></p>
+	<p>Don't have an account? <a id="signup" href="{{ url_for('signup') }}">Sign Up</a></p>
+	<p>Or <a id="guest" href="{{ url_for('guest') }}">Log In as a Guest</a></p>
 		</div>
-		<script src="{{ url_for('static', filename='login.js') }}"></script>
+		<script src="{{ url_for('static', filename='styles/login.js') }}"></script>
 </body>
 </html>
