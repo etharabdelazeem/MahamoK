@@ -36,7 +36,7 @@ def load_user(user_id):
 
 @app.route('/')
 def welcome():
-    return 'Welcome to MahamoK!'
+    return render_template('welcome.html')
 
 @app.route('/homepage')
 def homepage():
