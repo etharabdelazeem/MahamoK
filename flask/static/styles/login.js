@@ -8,11 +8,11 @@ const translations = {
         // Add other translations as needed
     },
     ar: {
-            emailjs: "a Email Address",
-            passwordjs: "r Password",
-            login: "a Log In",
-            signup: "b Sign Up",
-            guest: "i Log In as a Guest",
+            emailjs: "عنوان البريد الإلكتروني",
+            passwordjs: "كلمة السرّ",
+            login: "تسجيل الدُّخول",
+            signup: "إنشاء حساب",
+            guest: "تسجيل الدُّخول كضيف",
         // Add other translations as needed
     }
 };

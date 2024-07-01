@@ -10,13 +10,13 @@ const translations = {
         // Add other translations as needed
     },
     ar: {
-	    usernamejs: "a username",
-	    emailjs: "a Email Address",
-            passwordjs: "r Password",
-	    passwordjs2: "c confirm password",
-            login: "a Log In",
-            signup: "b Sign Up",
-            guest: "i Log In as a Guest"
+	    usernamejs: "اسم المستخدم",
+	    emailjs: "عنوان البريد الإلكتروني",
+            passwordjs: "كلمة السرّ",
+	    passwordjs2: "تأكيد كلمة السرّ",
+            login: "تسجيل الدُّخول",
+            signup: "إنشاء حساب",
+            guest: "تسجيل الدّخول كضيف"
         // Add other translations as needed
     }
 };
