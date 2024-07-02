@@ -12,7 +12,7 @@
 }
 
 html{
-  font-family: Scheherazade New, lexend, monospace;
+  font-family: Scheherazade New, lexend, sans-serif;
   font-size: 16pt;
   color: var(--primary-color);
 }
@@ -59,7 +59,7 @@ label {
 input[type="email"],
 input[type="text"],
 input[type="password"] {
-	font-family: Scheherazade New, lexend, monospace;
+	font-family: Scheherazade New, lexend, sans-serif;
 	width: 100%;
 	padding: 10px;
 	border: 1px solid #ccc;
@@ -70,7 +70,7 @@ input[type="password"] {
 button[type="submit"] {
 	background-color: var(--secondary-color);
 	color: white;
-	font-family: Scheherazade New, lexend, monospace;
+	font-family: Scheherazade New, lexend, sans-serif;
 	padding: 10px 20px;
 	border: none;
 	border-radius: 3px;

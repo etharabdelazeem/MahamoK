@@ -12,7 +12,7 @@
 }
 
 html{
-  font-family: Scheherazade New, lexend, monospace;
+  font-family: Scheherazade New, lexend, sans-serif;
   font-size: 16pt;
   color: var(--text-color);
  }
@@ -121,7 +121,7 @@ h1{
 #todo-form input[type="date"] {
     /* Customize date input appearance as needed */
     padding: 8px;
-    font-family: Scheherazade New, lexend, monospace;
+    font-family: Scheherazade New, lexend, sans-serif;
     border: 1px solid var(--secondary-color);
     border-radius: 8px;
     font-size: 0.8rem;
