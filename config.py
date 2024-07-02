@@ -13,4 +13,4 @@ class DevelopmentConfig(Config):
         'mysql+pymysql://mahamok_user:your_password@localhost/mahamok'
 
 class ProductionConfig(Config):
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or 'mysql+pymysql://prod_user:prod_password@db.example.com/mahamok'
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or 'mysql+pymysql://vagrant:vagrant@db.example.com/mahamok'
