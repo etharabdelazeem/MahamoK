@@ -76,7 +76,7 @@ def login():
 
 @app.route('/guest')
 def guest():
-        return redirect(url_for('guest'))
+        return redirect(url_for('homepage'))
 
 @app.route('/logout')
 @login_required
