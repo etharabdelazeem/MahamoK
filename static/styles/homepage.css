@@ -129,6 +129,15 @@ h1{
     color: var(--accent-color);
 }
 
+input:focus{
+	outline: 2px solid var(--accent-color);
+	outline-offset: 2px;
+}
+
+input:focus::placeholder{
+	color: transparent;
+}
+
 #todo-form button {
     padding: 12px 20px;
     background-color: var(--accent-color);
