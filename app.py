@@ -108,10 +108,10 @@ def add_task():
         'completed': new_task.completed
     }
 
-    if request.is_json:
-        return jsonify(success=True, task=task_data)
+#    if request.is_json:
+    return jsonify(success=True, task=task_data), 201
 
-    return redirect(url_for('homepage'))
+#    return redirect(url_for('homepage'))
 
 @app.route('/complete_task/<int:task_id>')
 def complete_task(task_id):
