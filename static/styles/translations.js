@@ -1,7 +1,7 @@
 const translations = {
     en: {
         //welcome: {{ 'Welcome, ' + current_user.username + '!' if current_user.is_authenticated else 'Welcome, Our dear Guest!' }},
-	    h1: "Today's MahamoK:",
+	    h1: "MahamoK for today:",
 	    //description: "Description: {{ task.description }}",
 	    //deadline: "Deadline: {{ task.deadline }}"
     },
