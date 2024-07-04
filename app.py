@@ -90,9 +90,15 @@ def add_task():
     description = request.form.get('description', '')
     deadline = request.form.get('deadline', None) or None
     priority = request.form.get('priority', '')
+
+    # Check if the user is authenticated
+    user_id = current_user.id if current_user.is_authenticated else None
+
     new_task = Task(title=title, description=description, deadline=deadline, priority=priority, user_id=current_user.id)
+
     db.session.add(new_task)
     db.session.commit()
+
     task_data = {
         'id': new_task.id,
         'title': new_task.title,
@@ -101,8 +107,10 @@ def add_task():
         'priority': new_task.priority,
         'completed': new_task.completed
     }
+
     if request.is_json:
         return jsonify(success=True, task=task_data)
+
     return redirect(url_for('homepage'))
 
 @app.route('/complete_task/<int:task_id>')

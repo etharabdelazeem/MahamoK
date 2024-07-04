@@ -18,5 +18,7 @@ class Task(db.Model):
     deadline = db.Column(db.DateTime)
     priority = db.Column(db.String(50))  # e.g., "low", "medium", "high"
     completed = db.Column(db.Boolean, default=False)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=True)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
+
+    user = db.relationship('User', back_populates='tasks')
