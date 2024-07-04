@@ -19,13 +19,12 @@ $(document).ready(function() {
         $.ajax({
             url: '/add_task',
             type: 'POST',
-            contentType: 'application/json',
-            data: JSON.stringify({
+            data: {
                 title: title,
                 description: description,
                 priority: priority,
                 deadline: deadline
-            }),
+            },
             success: function(response) {
                 // On success, append the new task to the task list
                 appendTask(response.task);
