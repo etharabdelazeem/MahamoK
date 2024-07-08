@@ -19,16 +19,17 @@ if os.environ.get('FLASK_ENV') == 'production':
 else:
     app.config.from_object(DevelopmentConfig)
 
-#for guests
+# For guests
 class AnonymousUser(AnonymousUserMixin):
-        id = None
+    id = None
+
 # Initialize the database and login manager
 db.init_app(app)
-migrate = Migrate(app, db)  # Initialize Flask-Migrate
+migrate = Migrate(app, db)  # Initialize Flask-Migrate for database migrations
 login_manager = LoginManager(app)
-login_manager.login_view = 'login'
+login_manager.login_view = 'login'  # Redirect users to login page if not authenticated
 login_manager.login_message_category = 'info'
-login_manager.anonymous_user = AnonymousUser
+login_manager.anonymous_user = AnonymousUser  # Set the anonymous user class
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -51,13 +52,21 @@ def homepage():
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     if request.method == 'POST':
+        # Get form data
         username = request.form['username']
         email = request.form['email']
         password = request.form['password']
+        
+        # Hash the password
         hashed_password = generate_password_hash(password, method='pbkdf2:sha256')
+        
+        # Create a new user
         new_user = User(username=username, email=email, password=hashed_password)
+        
+        # Add the new user to the database
         db.session.add(new_user)
         db.session.commit()
+        
         flash('Account created successfully!', 'success')
         return redirect(url_for('login'))
     return render_template('signup.html')
@@ -65,18 +74,24 @@ def signup():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
+        # Get form data
         email = request.form['email']
         password = request.form['password']
+        
+        # Query for the user by email
         user = User.query.filter_by(email=email).first()
+        
+        # Check if the user exists and the password is correct
         if user and check_password_hash(user.password, password):
             login_user(user)
             return redirect(url_for('homepage'))
+        
         flash('Login Unsuccessful. Please check email and password', 'danger')
     return render_template('login.html')
 
 @app.route('/guest')
 def guest():
-        return redirect(url_for('homepage'))
+    return redirect(url_for('homepage'))
 
 @app.route('/logout')
 @login_required
@@ -86,6 +101,7 @@ def logout():
 
 @app.route('/add_task', methods=['POST'])
 def add_task():
+    # Get form data
     title = request.form['title']
     description = request.form.get('description', '')
     deadline = request.form.get('deadline', None) or None
@@ -94,11 +110,14 @@ def add_task():
     # Check if the user is authenticated
     user_id = current_user.id if current_user.is_authenticated else None
 
+    # Create a new task
     new_task = Task(title=title, description=description, deadline=deadline, priority=priority, user_id=current_user.id)
 
+    # Add the new task to the database
     db.session.add(new_task)
     db.session.commit()
 
+    # Prepare the task data for the JSON response
     task_data = {
         'id': new_task.id,
         'title': new_task.title,
@@ -108,25 +127,31 @@ def add_task():
         'completed': new_task.completed
     }
 
-#    if request.is_json:
+    # Return a JSON response with the new task details
     return jsonify(success=True, task=task_data), 201
-
-#    return redirect(url_for('homepage'))
 
 @app.route('/complete_task/<int:task_id>')
 def complete_task(task_id):
+    # Get the task by ID
     task = Task.query.get_or_404(task_id)
+    
+    # Mark the task as completed
     task.completed = True
     db.session.commit()
+    
     return redirect(url_for('homepage'))
 
 @app.route('/delete_task/<int:task_id>')
 def delete_task(task_id):
+    # Get the task by ID
     task = Task.query.get_or_404(task_id)
+    
+    # Delete the task from the database
     db.session.delete(task)
     db.session.commit()
+    
     return redirect(url_for('homepage'))
 
-
 if __name__ == '__main__':
-        app.run(debug=True, host='0.0.0.0', port='5000')
+    app.run(debug=True, host='0.0.0.0', port='5000')
+
