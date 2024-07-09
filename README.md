@@ -7,28 +7,29 @@
 - [Introduction](#introduction)
 - [Live Demo](#live-demo)
 - [Authors](#authors)
+- [Blog Article](#blog-article)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Contributing](#contributing)
 - [Licensing](#licensing)
 
-**Introduction:**
+## Introduction:
 
 MahamoK is a user-friendly web application designed to empower you to manage your tasks effectively. We understand the struggle of juggling multiple to-do lists and missing crucial features. That's why we created MahamoK, offering a streamlined and efficient way to organize your tasks and boost your productivity.
 
-**Live Demo:**
+## Live Demo:
 
 Access the Deployed Application: [MahamoK](http://3.94.185.63/)
 
 ![MahamoK Screenshot](https://github.com/etharabdelazeem/MahamoK/assets/46841582/85e6174e-9611-4478-86ff-d3cbc4685500)
 ([Watch the Demo video!](https://youtu.be/v6tgjsvaE3w?si=SKajz9ApJs6krTok))
 
-**Authors:**
+## Authors:
 
 - Ethar Abdalazeem ([LinkedIn](https://www.linkedin.com/in/etharabdelazeem))
 - Rayan Hassan ([LinkedIn](https://www.linkedin.com/in/rayan-khogali-aa485921b/))
 
-**Blog Article:**
+## Blog Article:
 
 Read the full story of MahamoK in our [Project Blog Article](link_to_your_blog_article)
 
