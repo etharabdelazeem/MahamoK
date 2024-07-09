@@ -1,6 +1,6 @@
 # MahamoK
 
-![MahamoK Logo](path_to_your_logo_image) <!-- Add the path to your logo image -->
+![MahamoK-logo](https://github.com/etharabdelazeem/MahamoK/assets/46841582/3a21ca3e-2d36-438f-b4e8-cb0e921de0fe)
 
 **Introduction:**
 
@@ -10,7 +10,7 @@ MahamoK is a user-friendly web application designed to empower you to manage you
 
 Access the Deployed Application: [MahamoK](http://3.94.185.63/)
 
-![MahamoK Screenshot](path_to_your_screenshot) <!-- Add the path to your screenshot -->
+![MahamoK Demo](https://github.com/etharabdelazeem/MahamoK/assets/46841582/f51a495d-40eb-4f14-915a-cf02ea4ad6ef)
 
 **Authors:**
 
@@ -29,7 +29,6 @@ Read the full story of MahamoK in our [Project Blog Article](link_to_your_blog_a
 - [Installation](#installation)
 - [Usage](#usage)
 - [Contributing](#contributing)
-- [Related Projects](#related-projects)
 - [Licensing](#licensing)
 
 ## Installation
@@ -129,24 +128,19 @@ We welcome contributions from the community! To contribute to MahamoK, please fo
 
 We'll review your pull request and provide feedback.
 
-## Related Projects
-
-- [Related Project 1](link_to_related_project)
-- [Related Project 2](link_to_related_project)
-
 ## Licensing
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is not yet licensed.
 
 ---
 
 **Thank you for visiting MahamoK! We hope our application helps you stay organized and productive.**
 
-![MahamoK Tasks](path_to_another_screenshot) <!-- Add another screenshot path -->
+![thankyougif](https://github.com/etharabdelazeem/MahamoK/assets/46841582/a96ded49-54ea-4714-87d8-6c46902b7a74)
 
 ---
 
 **Contact:**
 
-For any inquiries or support, please contact us at: support@mahamok.com
+For any inquiries or support, please contact us!
 
