@@ -89,6 +89,20 @@ $(document).ready(function() {
         });
     }
 
+    // Function to check a task completed
+    function completeTask(taskId) {
+        $.ajax({
+            url: `/complete_task/${taskId}`,
+            type: 'POST',
+            success: function(response) {
+                location.reload();
+            },
+            error: function(error) {
+                console.error('Error:', error);
+            }
+        });
+    }
+
     // Event handler for logout button
     $('#logout-button').click(function(event) {
         window.location.href = '/logout';

@@ -1,67 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<meta htttp-eqiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Home</title>
-		<link rel="stylesheet" href="{{ url_for('static',filename='styles/homepage.css') }}"/>
-		<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-		<script src="{{ url_for('static',filename='styles/homepage.js') }}" defer></script>
-	</head>
-	<body>
-		<header class="navbar">
-			<div class="navdiv">
-				<div class="logo"><img src="{{ url_for('static', filename='icons/MahamoK-logo.png') }}" alt="Logo"></div>
-				<ul class="navbarlist">
-					<p id="welcome">{{ 'Welcome, ' + current_user.username + '!' if current_user.is_authenticated else 'Welcome, Our dear Guest!' }}</p>
-					<button id="logout-button"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#f9f9f9"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h280v80H200Zm440-160-55-58 102-102H360v-80h327L585-622l55-58 200 200-200 200Z"/></svg></button>
-				</ul>
-			</div>
-		</header>
-		<div class="wrapper">
-			<h1 id="h1">MahamoK for today:</h1>
-			<ul id="todo-list">
-				{% for task in tasks %}
-				<li class="todo">
-					<div class="task-header">
-						<input type="checkbox" id="todo-{{ task.id }}">
-						<label for="todo-{{ task.id }}" class="custom-checkbox">
-							<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#124c81"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
-						</label>
-						<label for="todo-{{ task.id }}" class="todo-text">{{ task.title }}</label>
-						<div class="task-priority {{ task.priority | lower }}"></div>
-						<button class="delete-button" onclick="location.href='{{ url_for('delete_task', task_id=task.id) }}'">
-							<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#124c81"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg>
-						</button>
-					</div>
-					<div class="task-details">
-            					<p id="description" class="task-description">Description: {{ task.description }}</p>
-            					<p id="deadline" class="task-deadline">Deadline: {{ task.deadline }}</p>
-					</div>
-				</li>
-				{% endfor %}
-			</ul>
-			<form id="todo-form" method="POST" action="{{ url_for('add_task') }}">
-				<div>
-					<div>
-						<input id="todo-input" type="text" name="title" placeholder="Write your task" required>
-						<div class="task-details">
-							<input id="todo-description" type="text" name="description" placeholder="Description (optional)">
-							<input id="todo-priority" type="text" name="priority" placeholder="Priority (optional)">
-							<input id="todo-deadline" type="date" name="deadline" placeholder="Deadline (optional)">
-						</div>
-			</div>
-				<div>
-				<button id="add-button">
-					<svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#f9f9f9"><path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/></svg>
-				</button>
-				</div>
-			</div>
-			</form>
-		</div>
-		<footer>
-		</footer>
-		<script src="{{ url_for('static', filename='styles/translations.js') }}"></script>
-	</body>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/homepage.css') }}">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='styles/homepage.js') }}" defer></script>
+</head>
+<body>
+    <header class="navbar">
+        <div class="navdiv">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='icons/MahamoK-logo.png') }}" alt="Logo">
+            </div>
+            <ul class="navbarlist">
+                <p id="welcome">{{ 'Welcome, ' + current_user.username + '!' if current_user.is_authenticated else 'Welcome, Our dear Guest!' }}</p>
+                <button id="logout-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#f9f9f9">
+                        <path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h280v80H200Zm440-160-55-58 102-102H360v-80h327L585-622l55-58 200 200-200 200Z"/>
+                    </svg>
+                </button>
+            </ul>
+        </div>
+    </header>
+    <div class="wrapper">
+        <h1 id="h1">MahamoK for today:</h1>
+        <ul id="todo-list">
+            {% for task in tasks %}
+            <li class="todo">
+                <div class="task-header">
+                    <input type="checkbox" id="todo-{{ task.id }}" {% if task.completed %}checked{% endif %} onclick="completeTask({{ task.id }})">
+                    <label for="todo-{{ task.id }}" class="custom-checkbox">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#124c81">
+                            <path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/>
+                        </svg>
+                    </label>
+                    <label for="todo-{{ task.id }}" class="todo-text">{{ task.title }}</label>
+                    <div class="task-priority {{ task.priority | lower }}"></div>
+                    <button class="delete-button" onclick="location.href='{{ url_for('delete_task', task_id=task.id) }}'">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#124c81">
+                            <path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="task-details">
+                    <p id="description" class="task-description">Description: {{ task.description }}</p>
+                    <p id="deadline" class="task-deadline">Deadline: {{ task.deadline }}</p>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+        <form id="todo-form" method="POST" action="{{ url_for('add_task') }}">
+            <div>
+                <input id="todo-input" type="text" name="title" placeholder="Write your task" required>
+                <div class="task-details">
+                    <input id="todo-description" type="text" name="description" placeholder="Description (optional)">
+                    <input id="todo-priority" type="text" name="priority" placeholder="Priority (optional)">
+                    <input id="todo-deadline" type="date" name="deadline" placeholder="Deadline (optional)">
+                </div>
+                <button id="add-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#f9f9f9">
+                        <path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/>
+                    </svg>
+                </button>
+            </div>
+        </form>
+    </div>
+    <footer></footer>
+    <script src="{{ url_for('static', filename='styles/translations.js') }}"></script>
+</body>
 </html>
+
+
