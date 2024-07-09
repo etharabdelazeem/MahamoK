@@ -90,10 +90,12 @@ $(document).ready(function() {
     }
 
     // Function to check a task completed
-    function completeTask(taskId) {
+    function completeTask(taskId, isChecked) {
         $.ajax({
             url: `/complete_task/${taskId}`,
             type: 'POST',
+            data: JSON.stringify({ completed: isChecked }),
+            contentType: 'application/json',
             success: function(response) {
                 location.reload();
             },

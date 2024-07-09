@@ -139,7 +139,7 @@ def complete_task(task_id):
     task.completed = True
     db.session.commit()
     
-    return redirect(url_for('homepage'))
+    return jsonify(success=True), 200
 
 @app.route('/delete_task/<int:task_id>')
 def delete_task(task_id):
