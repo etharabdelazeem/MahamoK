@@ -31,7 +31,9 @@ Access the Deployed Application: [MahamoK](http://3.94.185.63/)
 
 ## Blog Article:
 
-Read the full story of MahamoK in our [Project Blog Article](link_to_your_blog_article)
+Read the full story of MahamoK in our Blog articles:
+- [Ethar's Article](https://www.linkedin.com/pulse/mahamok-simple-to-do-list-app-ethar-abdelazeem-fyihe)
+- [Rayan's Article](put_your_link_here)
 
 ## Installation
 
